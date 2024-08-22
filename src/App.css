@@ -1,0 +1,115 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.ui.fixed.menu {
+  background-color: #333; /* Dark Gray */
+  color: #fff; /* White */
+  padding: 1em 0; /* Top and Bottom padding */
+  position: fixed; /* Fixed position */
+  top: 0; /* Top position */
+  width: 100%; /* Full width */
+  z-index: 1000; /* High z-index */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+.ui.container.center {
+  text-align: center; /* Center text alignment */
+}
+
+.ui.fixed.menu h1 {
+  font-size: 1.5em; /* Font size */
+  margin: 0; /* No margin */
+  font-weight: bold; /* Bold font weight */
+}
+
+.header-button {
+  background-color: #4CAF50; /* Green */
+  border: none; /* No border */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Padding */
+  text-align: center; /* Center text alignment */
+  text-decoration: none; /* No text decoration */
+  display: inline-block; /* Inline-block display */
+  font-size: 16px; /* Font size */
+  margin: 0 10px; /* Margin */
+  cursor: pointer; /* Pointer cursor */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.header-button:hover {
+  background-color: #3e8e41; /* Dark Green on hover */
+}
+
+.header-button:hover {
+  background-color: #3e8e41; /* Dark Green */
+}
+
+.content-container {
+  padding-top: 110px; /* Adjust the value to match the header height */
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+.search-bar {
+  /* position: absolute; */
+  left: 10%;
+  transform: translateX(-50%);
+  margin: 0 50px; /* Adjust the margin to fit your design */
+  padding: 10px;
+  border-radius: 20px; /* Semi-circular edges */
+  background-color: #f0f0f0; /* Light gray background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft box shadow */
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px; /* Semi-circular edges */
+  font-size: 16px;
+}
+
+.ui.container.center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui.container.center h1 {
+  margin-right: 20px; /* Add some space between the logo and search bar */
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
