@@ -228,6 +228,12 @@ body {
   background-color: #f0f0f0;
 }
 
+.carousel{
+  align-items: center;
+  padding-top: 200px;
+  height: 100px;
+}
+
 .login-container {
   max-width: 400px;
   margin: 50px auto;
