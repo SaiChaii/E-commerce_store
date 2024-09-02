@@ -28,7 +28,7 @@ const Signup = () => {
             password !== ''
           ) {
             console.log('data set');
-            Login.push({ UserN: username, PassW: password });
+            Login.push({ UserN: username, PassW: password ,wishlist:[]});
 
             localStorage.setItem('LogIn', JSON.stringify(Login));
 
