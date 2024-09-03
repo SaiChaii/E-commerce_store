@@ -12,6 +12,7 @@ import Womens from './containers/Womens';
 import Groceries from './containers/Groceries';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Home from './containers/Home';
+import Profile from './containers/Profile';
 const LazyMens = React.lazy(() => import('./containers/Mens'));
 const LazyWomens = React.lazy(() => import('./containers/Womens'));
 const LazyKids = React.lazy(() => import('./containers/Kids'));
@@ -30,6 +31,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/sign-up" component={Signup} />
             <Route path="/groceries" component={Groceries}/>
+            <Route path="/profile" component={Profile}/>
             <Route path="/mens">
               <React.Suspense fallback="Loading....">
                 <LazyMens />

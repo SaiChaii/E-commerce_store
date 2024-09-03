@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Signup from './Signup';
 
@@ -6,7 +6,13 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const [suggestedEmail,setsuggestedEmail]= useState("")
   const history = useHistory();
+  const Users=JSON.parse(localStorage.getItem("Users"))
+  useEffect(()=>{
+    const suggestedEmail=Users.find((p)=>p.userN===username)
+    setsuggestedEmail(suggestedEmail)
+  },[username])
 
   return (
     <div className="login-container">
@@ -18,15 +24,17 @@ const Login = () => {
         onSubmit={(event) => {
           event.preventDefault();
 
-          const UNList = JSON.parse(localStorage.getItem('LogIn'));
-            UNList.forEach((element) => {
-              if (element.UseN === username && element.PassW === password) {
-                setError('');
-                history.push('/home');
-              } else {
-                setError('UserName / Password is wrong');
-              }
-            });
+          const Users = JSON.parse(localStorage.getItem('Users'));
+
+          // localStorage.setItem("User","{}")
+          Users.forEach((element) => {
+            if (element.UseN === username && element.PassW === password) {
+              localStorage.setItem('User', JSON.stringify(element));
+              history.push('/home');
+            } else {
+              setError('UserName / Password is wrong');
+            }
+          });
         }}
       >
         <label>
@@ -35,7 +43,34 @@ const Login = () => {
             type="text"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
+            onClick={(event)=>{
+              return(
+                <div>
+                {
+                  Users.map((user)=>{
+                    return(
+                      <div>
+                        {user.UserN}
+                        {user.PassW}
+                      </div>
+                    )
+                  })
+                }
+                </div>
+              )
+            }}
+            placeholder='Enter your e-mail'
           />
+          {/* {
+            suggestedEmail && (
+              <div className='email-suggestion'>
+                <p>
+                  Log in with {suggestedEmail}
+                </p>
+
+              </div>
+            )
+          } */}
         </label>
         <br />
         <label>
@@ -44,6 +79,7 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            placeholder='Enter your password'
           />
         </label>
         <br />
@@ -55,7 +91,7 @@ const Login = () => {
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
         <Link to="/sign-up" style={{ color: 'red' }}>
-          Click here to signup!
+          New here ? Click here to signup!
         </Link>
       </form>
     </div>

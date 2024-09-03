@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 
 const Header = () => {
   return (
-    <div className="ui fixed menu" style={{color:"white"}}>
+    <div className="ui fixed menu" style={{ color: 'white' }}>
       <div className="ui container center">
         <Link to="/home" style={{ color: 'black' }}>
           <h1>FakeShop</h1>
@@ -13,7 +13,6 @@ const Header = () => {
           <h1>Mens</h1>
         </Link>
         <Link to="/women" style={{ color: 'black' }}>
-          
           <h1>Womens</h1>
         </Link>
         <Link to="/kids" style={{ color: 'black' }}>
@@ -25,7 +24,7 @@ const Header = () => {
         <SearchBar />
       </div>
       <div className="three-buttons">
-        <Link to="/login">
+        <Link to="/profile">
           <img src="../../user-icon.png" style={{ height: 30, width: 30 }} />
         </Link>
         <p style={{ color: 'black' }}>Profile</p>
