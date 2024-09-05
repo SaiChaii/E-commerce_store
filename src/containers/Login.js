@@ -28,8 +28,9 @@ const Login = () => {
 
           // localStorage.setItem("User","{}")
           Users.forEach((element) => {
-            if (element.UseN === username && element.PassW === password) {
+            if (element.UserN === username && element.PassW === password) {
               localStorage.setItem('User', JSON.stringify(element));
+              setError("")
               history.push('/home');
             } else {
               setError('UserName / Password is wrong');

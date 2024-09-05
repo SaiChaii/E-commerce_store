@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductDetail } from '../redux/actions/productActions';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import {
   selectProducts,
   removeselectProducts,
@@ -14,7 +15,9 @@ const ProductDetail = () => {
   const { id, images, title, price, category, description } = product;
   const { productId } = useParams();
   const loginUser = JSON.parse(localStorage.getItem('User'));
+  console.log(loginUser)
   const wishList = loginUser.wishlist;
+  const history = useHistory();
   //const wishList = useSelector((state) => state.wish.wish);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,7 +27,9 @@ const ProductDetail = () => {
     };
   }, [productId]);
 
-
+  if (Object.keys(loginUser).length === 0) {
+    history.push('/login');
+  }
   const wishlist = useMemo(() => {
     return (
       <div className="ui grid container">
@@ -57,9 +62,10 @@ const ProductDetail = () => {
                     onClick={
                       () => {
                         console.log('Clicked!');
-            
 
-                        const updatedWishlist = wishList.some((x) => x.id === product.id)
+                        const updatedWishlist = wishList.some(
+                          (x) => x.id === product.id
+                        )
                           ? [...wishList.filter((x) => x.id !== product.id)]
                           : [...wishList, product];
                         console.log(updatedWishlist);

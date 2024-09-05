@@ -10,10 +10,12 @@ const ProductComponent = (props) => {
   //console.log(product);
   const mens = useSelector((state) => state.mens.data);
   const searchText = useSelector((state) => state.search.searchWord);
-  
+  const appliances=useSelector((state)=>state.appliances.data)
   const women = useSelector((state) => state.women.wdata);
-  //console.log(props.name);
-  // console.log(mens)
+  const mobiles = useSelector((state)=>state.mobiles.mobiles)
+  const groceries=useSelector((state)=>state.groceries.groceries)
+  const electronics=useSelector((state)=>state.electronics.data)
+  
   const [filterData, setFilteredData] = useState([]);
 
   const [count, setCount] = useState(5);
@@ -23,7 +25,7 @@ const ProductComponent = (props) => {
   localStorage.setItem('WishListButton', '0');
 
   useEffect(() => {
-    //console.log("filterDataDebug")
+    console.log("filterDataDebug at useEffect")
     setState({
       items: filterData.slice(0, count),
       hasMore: true,
@@ -34,6 +36,7 @@ const ProductComponent = (props) => {
     
     let newItems = [];
     if (count + 2 < filterData.length) {
+      console.log("filterDataDebug at fetchmoreData")
       newItems = filterData?.slice(count, count + 5);
     }
     setCount(count + 5);
@@ -61,7 +64,28 @@ const ProductComponent = (props) => {
 
   useEffect(() => {
     console.log("props.name:",props.name)
-    if (props.name == 'mens') {
+    if(props.name=="mobiles")
+    {
+      console.log(mobiles)
+      setFilteredData(mobiles)
+    }
+    else if (props.name == 'apps') {
+      //const mens = useSelector((state) => state.mens.data);
+      console.log(appliances,"apps");
+      setFilteredData(appliances);
+      
+    }
+    else if (props.name == 'groceries') {
+      //const mens = useSelector((state) => state.mens.data);
+      console.log(groceries,"groceries");
+      setFilteredData(groceries);  
+    }
+    else if (props.name == 'electronics') {
+      //const mens = useSelector((state) => state.mens.data);
+      console.log(electronics,"electronics");
+      setFilteredData(electronics);  
+    }
+    else if (props.name == 'mens') {
       //const mens = useSelector((state) => state.mens.data);
       console.log(mens,"mens");
       setFilteredData(mens);
@@ -81,7 +105,7 @@ const ProductComponent = (props) => {
       setFilteredData(filteredArray);
     }
     
-  }, [searchText, product, props.name,mens,women]);
+  }, [searchText, product, props.name,mens,women,mobiles,appliances,groceries,electronics]);
 
   //console.log(filterData, 'filterData');
   const renderList = useMemo(() => {

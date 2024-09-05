@@ -14,42 +14,49 @@ export const fetchProducts = () => {
   };
 };
 
-export const FetchMensProducts=()=>{
-  return async function(dispatch)
-  {
-    console.log("before")
-    const response = await dummyJSON.get("/products/category/mens-shirts");
-    console.log("mens data fetched")
+export const FetchMensProducts = () => {
+  return async function (dispatch) {
+    console.log('before');
+    const response = await dummyJSON.get('/products/category/mens-shirts');
+    console.log('mens data fetched');
     dispatch({
-      type:Actiontypes.MENS_PRODUCTS,
-      payload:response.data,
-    })
-  }
-}
+      type: Actiontypes.MENS_PRODUCTS,
+      payload: response.data,
+    });
+  };
+};
 
-export const FetchGroceries=()=>{
-  return async function(dispatch)
-  {
-    console.log("before")
-    const response = await dummyJSON.get("/products/category/groceries");
-    console.log("groceries data fetched")
+export const FetchGroceries = () => {
+  return async function (dispatch) {
+    console.log('before');
+    const response = await dummyJSON.get('/products/category/groceries');
+    console.log('groceries data fetched');
     dispatch({
-      type:Actiontypes.GROCERIES,
-      payload:response.data,
-    })
-  }
-}
+      type: Actiontypes.GROCERIES,
+      payload: response.data,
+    });
+  };
+};
 
-export const FetchWomensProducts=()=>{
-  return async function(dispatch)
-  {
-    const response=await dummyJSON.get("/products/category/womens-dresses")
+export const fetchElectronics=()=>{
+  return async function(dispatch){
+    const response= await dummyJSON("/products/category/tablets")
     dispatch({
-      type:Actiontypes.WOMENS_PRODUCT,
+      type:Actiontypes.ELECTRONICS,
       payload:response.data
     })
   }
 }
+
+export const FetchWomensProducts = () => {
+  return async function (dispatch) {
+    const response = await dummyJSON.get('/products/category/womens-dresses');
+    dispatch({
+      type: Actiontypes.WOMENS_PRODUCT,
+      payload: response.data,
+    });
+  };
+};
 
 export const SearchValue = (payload) => {
   return {
@@ -67,6 +74,27 @@ export const fetchProductDetail = (id) => {
     });
   };
 };
+
+export const getMobiles = (payload) => {
+  return async function (dispatch) {
+    const response = await dummyJSON.get('/products/category/smartphones');
+    dispatch({
+      type: Actiontypes.MOBILES,
+      payload: response.data,
+    });
+  };
+};
+
+export const getAppliances=(i)=>{
+  return async function(dispatch){
+    const response=await dummyJSON('/products/category/home-decoration')
+    dispatch ({
+      type:Actiontypes.APPLIANCES,
+      payload:response.data
+    })
+    
+  }
+}
 
 export const setProducts = (payload) => {
   return {

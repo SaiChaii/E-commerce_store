@@ -4,11 +4,16 @@ import { useDispatch } from 'react-redux';
 import { fetchProducts } from '../redux/actions/productActions';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 const WishList = () => {
   const dispatch = useDispatch();
   // localStorage.setItem('WishListButton', '1');
+  const history = useHistory();
+
   const user = JSON.parse(localStorage.getItem('User'));
+  console.log(user,"user");
+  
   const list = user.wishlist;
   useEffect(() => {
     dispatch(fetchProducts());
@@ -55,7 +60,7 @@ const WishList = () => {
               </div>
             </div>
           );
-        })) || <>Enter some values into wishList</>}
+        })) || <h1><Link to="/login">Login</Link>/<Link to='/sign-up'>SignUp</Link> to view your wishlist</h1>}
     </>
   );
 };

@@ -9,13 +9,12 @@ const Signup = () => {
   const history = useHistory();
 
   // localStorage.setItem("Users",JSON.stringify([]));
-  const isPresent = (localStorage.getItem('Users') !== null);
+  const isPresent = localStorage.getItem('Users') !== null;
   if (isPresent) {
-    
   } else {
     localStorage.setItem(
       'Users',
-      JSON.stringify([{ UseN: 'sai', PassW: '123', wishlist: [], bag: [] }])
+      JSON.stringify([{ UserN: 'sai', PassW: '123', wishlist: [], bag: [] }])
     );
   }
   return (
@@ -28,7 +27,7 @@ const Signup = () => {
         onSubmit={(event) => {
           event.preventDefault();
           const users = JSON.parse(localStorage.getItem('Users'));
-          console.log(users)
+          console.log(users);
           if (
             uerror === '' &&
             perror === '' &&
@@ -36,9 +35,12 @@ const Signup = () => {
             password !== ''
           ) {
             console.log('data set');
-            users.push({ UserN: username, PassW: password, wishlist: [],bag:[] });
+            // const newUsers = [
+            //   ...users,
+            //   { UserN: username, PassW: password, wishlist: [], bag: [] },
+            // ];
 
-            localStorage.setItem('Users', JSON.stringify(users));
+            // localStorage.setItem('Users', JSON.stringify(newUsers));
             localStorage.setItem(
               'User',
               JSON.stringify({
@@ -49,6 +51,11 @@ const Signup = () => {
               })
             );
             history.push('/home');
+          }
+          else{
+            console.log(perror,"perror")
+            console.log(uerror,"uerror")
+
           }
         }}
       >

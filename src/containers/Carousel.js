@@ -54,7 +54,7 @@ const CarouselTab = () => {
   };
 
   const car = useMemo(() => {
-    console.log(data[index].ccolor)
+    // console.log(data[index].ccolor)
     return (
       <div className="carousel">
         <button

@@ -87,8 +87,37 @@ export const womenReducer = (state = { wdata: [] }, { type, payload }) => {
 export const groceriesReducer=(state={groceries:[]},{type,payload})=>{
   switch(type){
     case Actiontypes.GROCERIES:
-      return {...state,groceries:payload}
+      return {...state,groceries:payload.products}
     default:
       return state;
+  }
+}
+
+export const mobileReducer=(state={mobiles:[]},{type,payload})=>{
+  switch(type){
+    case Actiontypes.MOBILES:
+      return {...state,mobiles:payload.products}
+    default:
+      return state;
+  }
+}
+
+export const appReducer=(state={data:[]},{type,payload})=>{
+  switch(type)
+  {
+    case Actiontypes.APPLIANCES:
+      return {...state,data:payload.products}
+    default:
+      return state
+  }
+}
+
+export const electronicsReducer=(state={data:[]},{type,payload})=>{
+  switch(type)
+  {
+    case Actiontypes.ELECTRONICS:
+      return {...state,data:payload.products}
+    default:
+      return state
   }
 }

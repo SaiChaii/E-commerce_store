@@ -7,16 +7,7 @@ const Header = () => {
     <div className="ui fixed menu" style={{ color: 'white' }}>
       <div className="ui container center">
         <Link to="/home" style={{ color: 'black' }}>
-          <h1>FakeShop</h1>
-        </Link>
-        <Link to="/mens" style={{ color: 'black' }}>
-          <h1>Mens</h1>
-        </Link>
-        <Link to="/women" style={{ color: 'black' }}>
-          <h1>Womens</h1>
-        </Link>
-        <Link to="/kids" style={{ color: 'black' }}>
-          <h1>Kids</h1>
+          <h1 style={{fontSize:"50px"}}>FakeShop</h1>
         </Link>
       </div>
 
