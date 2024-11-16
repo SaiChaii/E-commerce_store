@@ -9,7 +9,6 @@ const Groceries=()=>{
         dispatch(FetchGroceries())
     },[])
     const data=useSelector((state)=>state.groceries.groceries.products);
-    console.log(data)
     const renderGroceries = () => {
         return (
           <div className="ui grid container">

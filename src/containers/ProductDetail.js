@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,11 +14,11 @@ const ProductDetail = () => {
   const product = useSelector((state) => state.product);
   const { id, images, title, price, category, description } = product;
   const { productId } = useParams();
-  const loginUser = JSON.parse(localStorage.getItem('User'));
-  console.log(loginUser)
-  const wishList = loginUser.wishlist;
+  const loginUser = localStorage.getItem('User')
+    ? JSON.parse(localStorage.getItem('User'))
+    : null;
+  const wishList = loginUser?.wishlist;
   const history = useHistory();
-  //const wishList = useSelector((state) => state.wish.wish);
   const dispatch = useDispatch();
   useEffect(() => {
     if (productId && productId !== '') dispatch(fetchProductDetail(productId));
@@ -26,10 +26,7 @@ const ProductDetail = () => {
       dispatch(removeselectProducts());
     };
   }, [productId]);
-
-  if (Object.keys(loginUser).length === 0) {
-    history.push('/login');
-  }
+  const [iswled,setiswled] = useState(wishList?.some(obj=>obj.id==productId));
   const wishlist = useMemo(() => {
     return (
       <div className="ui grid container">
@@ -61,14 +58,12 @@ const ProductDetail = () => {
                     className="header-button"
                     onClick={
                       () => {
-                        console.log('Clicked!');
-
+                        if(loginUser){
                         const updatedWishlist = wishList.some(
                           (x) => x.id === product.id
                         )
-                          ? [...wishList.filter((x) => x.id !== product.id)]
-                          : [...wishList, product];
-                        console.log(updatedWishlist);
+                          ? (setiswled(false),[...wishList.filter((x) => x.id !== product.id)])
+                          : (setiswled(true),[...wishList, product])
                         const newloginUser = {
                           ...loginUser,
                           wishlist: updatedWishlist,
@@ -76,15 +71,14 @@ const ProductDetail = () => {
                         localStorage.setItem(
                           'User',
                           JSON.stringify(newloginUser)
-                        );
+                        );}
+                        else{
+                          history.push('/login')
+                        }
                       }
-
-                      //wishList.push(product)
-                      //dispatch(wishlistedProduct(product));
-                      //dispatch(wishlistedProduct(wishList));
                     }
                   >
-                    Wishlist
+                    {iswled?"Wishlisted":"Wishlist"}
                   </button>
                 </div>
               </div>
@@ -93,7 +87,7 @@ const ProductDetail = () => {
         )}
       </div>
     );
-  }, [wishList]);
+  }, [wishList,product]);
 
   return <>{wishlist}</>;
 };

@@ -5,7 +5,6 @@ import dummyJSON from '../../apis/dummyJSON';
 export const fetchProducts = () => {
   return async function (dispatch) {
     const response = await dummyJSON.get('/products');
-    console.log('fetchProducts');
     dispatch({
       type: Actiontypes.FETCH_PRODUCTS,
 
@@ -16,9 +15,7 @@ export const fetchProducts = () => {
 
 export const FetchMensProducts = () => {
   return async function (dispatch) {
-    console.log('before');
     const response = await dummyJSON.get('/products/category/mens-shirts');
-    console.log('mens data fetched');
     dispatch({
       type: Actiontypes.MENS_PRODUCTS,
       payload: response.data,
@@ -28,9 +25,7 @@ export const FetchMensProducts = () => {
 
 export const FetchGroceries = () => {
   return async function (dispatch) {
-    console.log('before');
     const response = await dummyJSON.get('/products/category/groceries');
-    console.log('groceries data fetched');
     dispatch({
       type: Actiontypes.GROCERIES,
       payload: response.data,

@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route,Redirect } from 'react-router-dom';
 import Header from './containers/Header';
 import ProductListing from './containers/ProductListing';
 import ProductDetail from './containers/ProductDetail';
@@ -28,6 +28,7 @@ function App() {
         <Header />
         <div className="content-container">
           <Switch style={{ marginTop: '10000px' }}>
+            <Route exact path="/" render={() => <Redirect to="/home" />} />
             <Route path="/home" component={Home} />
             <Route path="/allproducts" component={ProductListing} />
             <Route path="/product/:productId" component={ProductDetail} />

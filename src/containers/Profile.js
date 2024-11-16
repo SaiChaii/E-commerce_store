@@ -14,12 +14,8 @@ const Profile = () => {
       <button
         onClick={() => {
           const users = JSON.parse(localStorage.getItem('Users'));
-          console.log(users);
-          console.log()
           const data = users.filter((a) => a.UserN !== user.UserN);
-          console.log(data,"data before pushing user")
           data.push(user)
-          console.log(data,"data")
           localStorage.setItem('Users', JSON.stringify(data));
           localStorage.setItem('User', JSON.stringify({}));
           history.push('/login');

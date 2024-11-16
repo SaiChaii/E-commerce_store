@@ -27,14 +27,12 @@ const Signup = () => {
         onSubmit={(event) => {
           event.preventDefault();
           const users = JSON.parse(localStorage.getItem('Users'));
-          console.log(users);
           if (
             uerror === '' &&
             perror === '' &&
             username !== '' &&
             password !== ''
           ) {
-            console.log('data set');
             // const newUsers = [
             //   ...users,
             //   { UserN: username, PassW: password, wishlist: [], bag: [] },
@@ -52,11 +50,6 @@ const Signup = () => {
             );
             history.push('/home');
           }
-          else{
-            console.log(perror,"perror")
-            console.log(uerror,"uerror")
-
-          }
         }}
       >
         <label>
@@ -70,7 +63,6 @@ const Signup = () => {
               if (
                 Login.some((element) => element.UseN === event.target.value)
               ) {
-                console.log('found');
                 setUerror('Username already taken . Please change');
               } else {
                 setUerror('');

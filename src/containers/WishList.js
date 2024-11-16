@@ -5,6 +5,7 @@ import { fetchProducts } from '../redux/actions/productActions';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import emplywishlist from '../images/emplywishlist.svg';
 
 const WishList = () => {
   const dispatch = useDispatch();
@@ -12,9 +13,8 @@ const WishList = () => {
   const history = useHistory();
 
   const user = JSON.parse(localStorage.getItem('User'));
-  console.log(user,"user");
   
-  const list = user.wishlist;
+  const list = user?.wishlist;
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
@@ -33,11 +33,9 @@ const WishList = () => {
     }
   });
 
-  console.log(product, 'product');
-
   return (
     <>
-      {(list &&
+      {(list ?
         list?.map((a) => {
           const { id, title, price, category, images } = a;
           return (
@@ -60,7 +58,7 @@ const WishList = () => {
               </div>
             </div>
           );
-        })) || <h1><Link to="/login">Login</Link>/<Link to='/sign-up'>SignUp</Link> to view your wishlist</h1>}
+        }) : <><img src={emplywishlist}/><h1><Link to="/login">Login</Link>/<Link to='/sign-up'>SignUp</Link> to view your wishlist</h1></> )}
     </>
   );
 };

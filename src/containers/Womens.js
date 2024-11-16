@@ -11,7 +11,6 @@ const Womens = () => {
     dispatch(FetchWomensProducts());
   }, []);
   const wdata=useSelector((state)=>state.women.wdata)
-  console.log(wdata);
 
   const renderWomens = () => {
     return (

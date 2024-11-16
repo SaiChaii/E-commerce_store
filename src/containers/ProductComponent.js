@@ -25,7 +25,6 @@ const ProductComponent = (props) => {
   localStorage.setItem('WishListButton', '0');
 
   useEffect(() => {
-    console.log("filterDataDebug at useEffect")
     setState({
       items: filterData.slice(0, count),
       hasMore: true,
@@ -36,7 +35,6 @@ const ProductComponent = (props) => {
     
     let newItems = [];
     if (count + 2 < filterData.length) {
-      console.log("filterDataDebug at fetchmoreData")
       newItems = filterData?.slice(count, count + 5);
     }
     setCount(count + 5);
@@ -63,41 +61,33 @@ const ProductComponent = (props) => {
   // }, [state.items,state.hasMore, count]);
 
   useEffect(() => {
-    console.log("props.name:",props.name)
     if(props.name=="mobiles")
     {
-      console.log(mobiles)
       setFilteredData(mobiles)
     }
     else if (props.name == 'apps') {
       //const mens = useSelector((state) => state.mens.data);
-      console.log(appliances,"apps");
       setFilteredData(appliances);
       
     }
     else if (props.name == 'groceries') {
       //const mens = useSelector((state) => state.mens.data);
-      console.log(groceries,"groceries");
       setFilteredData(groceries);  
     }
     else if (props.name == 'electronics') {
       //const mens = useSelector((state) => state.mens.data);
-      console.log(electronics,"electronics");
       setFilteredData(electronics);  
     }
     else if (props.name == 'mens') {
       //const mens = useSelector((state) => state.mens.data);
-      console.log(mens,"mens");
       setFilteredData(mens);
       
     } else if (props.name == 'womens') {
       //const women = useSelector((state) => state.women.wdata);
-      console.log(women,"women")
       setFilteredData(women);
       
     } else if (props.name == 'allproducts') {
       setFilteredData(product);
-      console.log("allproducts")
     } else if (searchText) {
       const filteredArray = product?.filter((data) =>
         data.title.toLowerCase().includes(searchText.toLowerCase())
