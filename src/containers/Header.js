@@ -1,23 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import SearchBar from "./SearchBar";
+import React from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import SearchBar from './SearchBar';
 
-const Header =()=>{
-    return (
-        <div className="ui fixed menu">
-            <div className="ui container center">
-                <h1>
-                    FakeShop
-                </h1>
-            </div>
-            <div className="search-bar">
-                <SearchBar />
-            </div>
-            <Link to="/wishlist">
-                <button className="header-button">Go to Wishlist</button>
-            </Link>
-        </div>
-    )
-}
+const Header = () => {
+  return (
+    <div className="ui fixed menu" style={{ color: 'white' }}>
+      <div className="ui container center">
+        <Link to="/home" style={{ color: 'black' }}>
+          <h1 style={{fontSize:"50px"}}>FakeShop</h1>
+        </Link>
+      </div>
+
+      <div className="search-bar">
+        <SearchBar />
+      </div>
+      <div className="three-buttons">
+        <Link to="/profile">
+          <img src="../../user-icon.png" style={{ height: 30, width: 30 }} />
+        </Link>
+        <p style={{ color: 'black' }}>Profile</p>
+      </div>
+      <div className="three-buttons">
+        <Link to="/wishlist">
+          <img src="../../wishbefore.png" style={{ height: 30, width: 30 }} />
+        </Link>
+        <p style={{ color: 'black' }}>WishList</p>
+      </div>
+      <div className="three-buttons">
+        <img src="../../bag.png" style={{ height: 30, width: 30 }} />
+        <p style={{ color: 'black' }}>Bag</p>
+      </div>
+    </div>
+  );
+};
 
 export default Header;

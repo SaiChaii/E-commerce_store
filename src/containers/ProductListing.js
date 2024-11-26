@@ -10,20 +10,27 @@ import { fetchProducts } from '../redux/actions/productActions';
 const ProductListing = () => {
   const dispatch = useDispatch();
 
-  console.log("ProductListing");
   
-  useEffect(() => {
-    console.log("USE EFFECT RUNNING")
+  useEffect(() => { 
     dispatch(fetchProducts());
   }, []);
 
   //console.log("ProductListing After");
 
-  return (
-    <div className="ui grid container">
-      <ProductComponent />
-    </div>
-  );
+  const renderall = () => {
+    return (
+      <div className="ui grid container">
+        <ProductComponent name="allproducts"/>
+      </div>
+    );
+  };
+  return <>{renderall()}</>;
+
+  // return (
+  //   <div className="ui grid container">
+  //     <ProductComponent name="allproducts"/>
+  //   </div>
+  // );
 };
 
 export default ProductListing;
