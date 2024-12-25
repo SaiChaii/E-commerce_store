@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { SearchValue } from '../redux/actions/productActions';
-import { Route } from 'react-router-dom/cjs/react-router-dom.min';
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { SearchValue } from "../redux/actions/productActions";
+import { Route } from "react-router-dom/cjs/react-router-dom.min";
 
 function SearchBar() {
-  const [inputValue, setInputValue] = useState('');
-  const [searchStr, setSearchStr] = useState('');
+  const [inputValue, setInputValue] = useState("");
+  const [searchStr, setSearchStr] = useState("");
 
   const dispatch = useDispatch();
-  
 
   const handleInputChange = (e) => {
     setSearchStr(e.target.value);
@@ -16,28 +15,25 @@ function SearchBar() {
   };
 
   return (
-    <>
-    <img
-        src="../../search-icon.png"
-        style={{
-          position: 'absolute',
-          top: '25px',
-          left: '8px',
-          height: '25px',
-          width: '28px',
-          backgroundColor: "white" 
-        }}
-      />
-    <div style={{ position: 'relative' }}>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchStr}
-        onChange={handleInputChange}
-        style={{ padding: '10px', paddingLeft: '30px' }}
-      />
+    <div
+      className=""
+      style={{ display: "flex", flexDirection: "row",alignItems:"center",gap:'5px'}}
+    >
+      <>
+        <img
+          src="../../search-icon.png"
+          style={{padding:"0 0 0 5px", width: "25px" }}
+          alt="search-icon"
+        />
+      
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchStr}
+          onChange={handleInputChange}
+        />
+        </>
     </div>
-    </>
   );
 }
 

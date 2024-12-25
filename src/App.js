@@ -27,7 +27,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <div className="content-container">
-          <Switch style={{ marginTop: '10000px' }}>
+          <Switch style={{ marginTop: "10000px" }}>
             <Route exact path="/" render={() => <Redirect to="/home" />} />
             <Route path="/home" component={Home} />
             <Route path="/allproducts" component={ProductListing} />
@@ -35,12 +35,12 @@ function App() {
             <Route path="/wishlist" component={WishList} />
             <Route path="/login" component={Login} />
             <Route path="/sign-up" component={Signup} />
-            <Route path="/groceries" component={Groceries}/>
-            <Route path="/profile" component={Profile}/>
-            <Route path="/mobiles" component={Mobile}/>
-            <Route path="/appliances" component={Appliances}/>
-            <Route path='/fashion' component={Fashion}/>
-            <Route path='/electronics' component={Electronics}/>
+            <Route path="/groceries" component={Groceries} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/mobiles" component={Mobile} />
+            <Route path="/appliances" component={Appliances} />
+            <Route path="/fashion" component={Fashion} />
+            <Route path="/electronics" component={Electronics} />
             <Route path="/mens">
               <React.Suspense fallback="Loading....">
                 <LazyMens />
