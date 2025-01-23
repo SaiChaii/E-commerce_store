@@ -1,24 +1,30 @@
-import React, { useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { Spinner } from 'react-spinner';
+import React, { useEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { Spinner } from "react-spinner";
 
-const ProductComponent = () => {
+const ProductComponent = (props) => {
   const product = useSelector((state) => state.allproducts.products); //array of objects
   //console.log(product);
-
+  const mens = useSelector((state) => state.mens.data);
   const searchText = useSelector((state) => state.search.searchWord);
+  const appliances = useSelector((state) => state.appliances.data);
+  const women = useSelector((state) => state.women.wdata);
+  const mobiles = useSelector((state) => state.mobiles.mobiles);
+  const groceries = useSelector((state) => state.groceries.groceries);
+  const electronics = useSelector((state) => state.electronics.data);
 
   const [filterData, setFilteredData] = useState([]);
 
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(5);
 
   const [state, setState] = useState({});
 
+  localStorage.setItem("WishListButton", "0");
+
   useEffect(() => {
-    //console.log("filterDataDebug")
     setState({
       items: filterData.slice(0, count),
       hasMore: true,
@@ -26,32 +32,14 @@ const ProductComponent = () => {
   }, [filterData]);
 
   const fetchMoreData = () => {
-    // if (state?.items?.length >= filterData?.length) {
-    //   setState({ hasMore: false });
-    //   return;
-    // }
-    // const newItems = filterData?.slice(count, count + 4);
-    //console.log(newItems);
-    let newItems=[]
+    let newItems = [];
     if (count + 2 < filterData.length) {
-      newItems = filterData?.slice(count, count + 4);
+      newItems = filterData?.slice(count, count + 5);
     }
-    setCount(count + 4);
+    setCount(count + 5);
     setTimeout(() => {
       setState({ ...state, items: [...state.items, ...newItems] });
     }, 500);
-    console.log(state.items);
-    // if (!state.hasMore) {
-    //   return;
-    // }
-
-    // const newItems=filterData.slice(count,count+2)
-
-    // setState({
-    //   items: state.items.concat(newItems),
-    //   hasMore: count + 2 < filterData.length,
-    // });
-    // setCount(count + 2);
   };
 
   // useEffect(() => {
@@ -72,16 +60,44 @@ const ProductComponent = () => {
   // }, [state.items,state.hasMore, count]);
 
   useEffect(() => {
-    if (searchText) {
+    if (props.name == "mobiles") {
+      setFilteredData(mobiles);
+    } else if (props.name == "apps") {
+      //const mens = useSelector((state) => state.mens.data);
+      setFilteredData(appliances);
+    } else if (props.name == "groceries") {
+      //const mens = useSelector((state) => state.mens.data);
+      setFilteredData(groceries);
+    } else if (props.name == "electronics") {
+      //const mens = useSelector((state) => state.mens.data);
+      setFilteredData(electronics);
+    } else if (props.name == "mens") {
+      //const mens = useSelector((state) => state.mens.data);
+      setFilteredData(mens);
+    } else if (props.name == "womens") {
+      //const women = useSelector((state) => state.women.wdata);
+      setFilteredData(women);
+    } else if (props.name == "allproducts") {
+      setFilteredData(product);
+    } else if (searchText) {
       const filteredArray = product?.filter((data) =>
         data.title.toLowerCase().includes(searchText.toLowerCase())
       );
       setFilteredData(filteredArray);
-    } else {
-      setFilteredData(product);
     }
-  }, [searchText, product]);
+  }, [
+    searchText,
+    product,
+    props.name,
+    mens,
+    women,
+    mobiles,
+    appliances,
+    groceries,
+    electronics,
+  ]);
 
+  //console.log(filterData, 'filterData');
   const renderList = useMemo(() => {
     return (
       <InfiniteScroll
@@ -90,29 +106,33 @@ const ProductComponent = () => {
         hasMore={state.hasMore}
         loader={<h4>Loading...</h4>}
         endMessage={
-          <p style={{ textAlign: 'center' }}>
+          <p style={{ textAlign: "center" }}>
             <b>Yay! You have seen it all</b>
           </p>
         }
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gridGap: '30px',
-          overflowY: 'auto',
-          padding: '20px',
-          minHeight: '100vh',
+          display: "grid",
+          gridTemplateColumns: "repeat(5, 1fr)",
+          gridGap: "30px",
+          overflowY: "auto",
+          padding: "20px",
+          minHeight: "100vh",
         }}
       >
         {state.items?.map((product) => {
-          const { id, title, price, category, image } = product;
+          const { id, title, price, category, images } = product;
           return (
-            <>
+            <div className="content-container">
               <div className="four wide column" key={id}>
                 <Link to={`/product/${id}`}>
                   <div className="ui link cards">
                     <div className="card">
                       <div className="image">
-                        <img src={image} alt={title} />
+                        <img
+                          src={images[0]}
+                          alt={title}
+                          style={{ height: "400px", width: "290px" }}
+                        />
                       </div>
                       <div className="content">
                         <div className="header">{title}</div>
@@ -123,14 +143,18 @@ const ProductComponent = () => {
                   </div>
                 </Link>
               </div>
-            </>
+            </div>
           );
         })}
       </InfiniteScroll>
     );
   }, [state.items]);
 
-  return <>{renderList}</>;
+  return (
+    <div className="infinte-scroll-outerdiv" style={{ align: "center" }}>
+      {renderList}
+    </div>
+  );
 };
 
 export default ProductComponent;

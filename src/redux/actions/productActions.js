@@ -1,13 +1,53 @@
 import { Actiontypes } from '../constants/action-types';
 import fakeStoreApi from '../../apis/fakeStoreApi';
+import dummyJSON from '../../apis/dummyJSON';
 
 export const fetchProducts = () => {
   return async function (dispatch) {
-    const response = await fakeStoreApi.get('/products');
-    console.log('fetchProducts');
+    const response = await dummyJSON.get('/products');
     dispatch({
       type: Actiontypes.FETCH_PRODUCTS,
 
+      payload: response.data,
+    });
+  };
+};
+
+export const FetchMensProducts = () => {
+  return async function (dispatch) {
+    const response = await dummyJSON.get('/products/category/mens-shirts');
+    dispatch({
+      type: Actiontypes.MENS_PRODUCTS,
+      payload: response.data,
+    });
+  };
+};
+
+export const FetchGroceries = () => {
+  return async function (dispatch) {
+    const response = await dummyJSON.get('/products/category/groceries');
+    dispatch({
+      type: Actiontypes.GROCERIES,
+      payload: response.data,
+    });
+  };
+};
+
+export const fetchElectronics=()=>{
+  return async function(dispatch){
+    const response= await dummyJSON("/products/category/tablets")
+    dispatch({
+      type:Actiontypes.ELECTRONICS,
+      payload:response.data
+    })
+  }
+}
+
+export const FetchWomensProducts = () => {
+  return async function (dispatch) {
+    const response = await dummyJSON.get('/products/category/womens-dresses');
+    dispatch({
+      type: Actiontypes.WOMENS_PRODUCT,
       payload: response.data,
     });
   };
@@ -22,13 +62,34 @@ export const SearchValue = (payload) => {
 
 export const fetchProductDetail = (id) => {
   return async function (dispatch) {
-    const response = await fakeStoreApi.get(`/products/${id}`);
+    const response = await dummyJSON.get(`/products/${id}`);
     dispatch({
       type: Actiontypes.FETCH_SPECIFIC_PRODUCT,
       payload: response.data,
     });
   };
 };
+
+export const getMobiles = (payload) => {
+  return async function (dispatch) {
+    const response = await dummyJSON.get('/products/category/smartphones');
+    dispatch({
+      type: Actiontypes.MOBILES,
+      payload: response.data,
+    });
+  };
+};
+
+export const getAppliances=(i)=>{
+  return async function(dispatch){
+    const response=await dummyJSON('/products/category/home-decoration')
+    dispatch ({
+      type:Actiontypes.APPLIANCES,
+      payload:response.data
+    })
+    
+  }
+}
 
 export const setProducts = (payload) => {
   return {
