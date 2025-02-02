@@ -269,6 +269,10 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+.custom-toast {
+  width: auto; /* Allows the width to adjust based on content */
+  margin: 0 auto; /* Center the toast */
+}
 
 .login-form input[type="submit"] {
   width: 100%;

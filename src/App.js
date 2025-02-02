@@ -28,7 +28,7 @@ function App() {
         <Header />
         <div className="content-container">
           <Switch style={{ marginTop: "10000px" }}>
-            <Route exact path="/" render={() => <Redirect to="/home" />} />
+            <Route exact path="/" render={() => <Redirect to="/login" />} />
             <Route path="/home" component={Home} />
             <Route path="/allproducts" component={ProductListing} />
             <Route path="/product/:productId" component={ProductDetail} />

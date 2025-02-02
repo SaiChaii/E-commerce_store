@@ -8,15 +8,16 @@ const Header = () => {
       className="ui fixed menu"
       style={{ display: "flex", flexDirection: "row", color: "white" }}
     >
-      <div className="ui container center" style={{ right: "20px" }}>
+      <div className="ui container center" style={{ right: "30px" }}>
         <Link to="/home" style={{ color: "black" }}>
           <h1
             style={{
-              fontSize: "3em",
+              fontSize: "2em",
               ffontFamily: "Arial, sans-serif",
+              left: "5px",
             }}
           >
-            Є-$тѳяё
+            Chai-Commerce
           </h1>
         </Link>
       </div>
