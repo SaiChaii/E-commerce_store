@@ -53,7 +53,6 @@ const Signup = () => {
             flexDirection: "column",
           }}
           onSubmit={(event) => {
-            console.log("Submitted!!");
             event.preventDefault();
             // const users = JSON.parse(localStorage?.getItem("Users"));
             if (
