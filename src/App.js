@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./containers/Header";
 import ProductListing from "./containers/ProductListing";
@@ -17,18 +17,26 @@ import Home from "./containers/Home";
 import Profile from "./containers/Profile";
 import Appliances from "./containers/Appliances";
 import Fashion from "./containers/Fashion";
+import { requireHeader } from "./containers/Constants";
+import { useLocation } from "react-router-dom/cjs/react-router-dom";
 const LazyMens = React.lazy(() => import("./containers/Mens"));
 const LazyWomens = React.lazy(() => import("./containers/Womens"));
 const LazyKids = React.lazy(() => import("./containers/Kids"));
 
 function App() {
+  // const location = useLocation();
+  // const path = location?.pathname;
+  // const [isHeaderrequired, setIsheaderRequired] = useState(false);
+  // useEffect(() => {
+  //   setIsheaderRequired(requireHeader?.find(path));
+  // }, [path]);
   return (
     <div className="App">
       <BrowserRouter>
         <Header />
         <div className="content-container">
           <Switch style={{ marginTop: "10000px" }}>
-            <Route exact path="/" render={() => <Redirect to="/home" />} />
+            <Route exact path="/" render={() => <Redirect to="/login" />} />
             <Route path="/home" component={Home} />
             <Route path="/allproducts" component={ProductListing} />
             <Route path="/product/:productId" component={ProductDetail} />

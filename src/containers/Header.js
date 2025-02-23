@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import SearchBar from "./SearchBar";
+import { useLocation } from "react-router-dom/cjs/react-router-dom";
+import { requireHeader } from "./Constants";
+import LoginHeader from "./LoginHeader";
 
 const Header = () => {
-  return (
+  const location = useLocation();
+  const path = location?.pathname;
+  const [isHeaderrequired, setIsheaderRequired] = useState(false);
+  useEffect(() => {
+    const main = path.split("/");
+    setIsheaderRequired(requireHeader?.includes(`/${main[1]}`));
+  }, [path]);
+  const isLogin = path === "/login";
+  return isHeaderrequired ? (
     <div
       className="ui fixed menu"
       style={{ display: "flex", flexDirection: "row", color: "white" }}
     >
-      <div className="ui container center" style={{ right: "20px" }}>
+      <div className="ui container center" style={{ right: "30px" }}>
         <Link to="/home" style={{ color: "black" }}>
           <h1
             style={{
-              fontSize: "3em",
+              fontSize: "2em",
               ffontFamily: "Arial, sans-serif",
+              left: "5px",
             }}
           >
-            Є-$тѳяё
+            Chai-Commerce
           </h1>
         </Link>
       </div>
@@ -53,6 +65,10 @@ const Header = () => {
         <p style={{ color: "black" }}>Bag</p>
       </div>
     </div>
+  ) : isLogin ? (
+    <LoginHeader val={"Login"} />
+  ) : (
+    <LoginHeader val={"Signup"} />
   );
 };
 

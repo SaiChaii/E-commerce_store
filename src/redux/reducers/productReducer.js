@@ -65,7 +65,6 @@ export const searchReducer = (
 };
 
 export const mensReducer = (state = { data: [] }, { type, payload }) => {
-  //console.log(payload.products,"payload.products")
   switch (type) {
     case Actiontypes.MENS_PRODUCTS:
       return { ...state, data: payload.products };

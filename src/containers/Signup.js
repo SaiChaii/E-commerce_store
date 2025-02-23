@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import signup from "../images/signup.svg";
+import { ToastContainer, toast } from "react-toastify";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [perror, setPerror] = useState("");
   const [uerror, setUerror] = useState("");
+  const [error, setError] = useState(false);
   const history = useHistory();
 
   // localStorage.setItem("Users",JSON.stringify([]));
@@ -28,12 +30,11 @@ const Signup = () => {
         gap: "100px",
       }}
     >
-      <img src={signup} style={{ width: "630px" }} alt="signup-img" />
+      <img src={signup} style={{ height: "80vh" }} alt="signup-img" />
       <div
-        className="login-header"
         style={{
-          height: "600px",
-          width: "800px",
+          height: "80vh",
+          width: "50%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -43,13 +44,17 @@ const Signup = () => {
         }}
       >
         <h1>SignUp</h1>
-
         <form
           className="login-form"
-          style={{ gap: "20px", margin: "0 10px 0 10px" }}
+          style={{
+            gap: "5px",
+            margin: "0 10px 0 10px",
+            display: "flex",
+            flexDirection: "column",
+          }}
           onSubmit={(event) => {
             event.preventDefault();
-            const users = JSON.parse(localStorage.getItem("Users"));
+            // const users = JSON.parse(localStorage?.getItem("Users"));
             if (
               uerror === "" &&
               perror === "" &&
@@ -66,6 +71,22 @@ const Signup = () => {
                 })
               );
               history.push("/home");
+            } else {
+              toast.error(
+                `Invalid Credentials . please recheck Username and Password`,
+                {
+                  position: "top-center",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: false,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  className: "custom-toast",
+                  // transition: Bounce,
+                }
+              );
             }
           }}
         >
@@ -83,14 +104,18 @@ const Signup = () => {
               value={username}
               style={{ marginLeft: "30px", width: "300px" }}
               onChange={(event) => {
-                const Login = JSON.parse(localStorage.getItem("Users"));
-                setUsername(event.target.value);
+                const Login = JSON.parse(localStorage?.getItem("Users"));
+                setUsername(event?.target?.value);
                 if (
-                  Login.some((element) => element.UseN === event.target.value)
+                  Login.some(
+                    (element) => element?.UseN === event?.target?.value
+                  )
                 ) {
                   setUerror("Username already taken . Please change");
+                  setError(true);
                 } else {
                   setUerror("");
+                  setError(false);
                 }
               }}
             />
@@ -109,7 +134,7 @@ const Signup = () => {
               type="password"
               value={password}
               style={{ marginLeft: "30px", width: "300px" }}
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={(event) => setPassword(event?.target?.value)}
             />
           </label>
           <br />
@@ -126,27 +151,40 @@ const Signup = () => {
               type="repassword"
               style={{ marginLeft: "30px", width: "300px" }}
               onChange={(event) => {
-                if (password !== event.target.value) {
+                if (password !== event?.target?.value) {
                   setPerror("Passwords dont match");
+                  setError(true);
                 } else {
                   setPerror("");
+                  setError(false);
                 }
               }}
             />
           </label>
           {/* <p>{error && <p style={{ color: 'red' }}>{error}</p>}</p> */}
+          <label>
+            <button
+              type="submit"
+              style={{ margin: "80px 0 0 0", padding: "8px 20px" }}
+            >
+              SignUp!
+            </button>
+            <ToastContainer
+              position="top-center"
+              TypeOptions="success"
+              // autoClose={1000}
+              // hideProgressBar={false}
+              // newestOnTop={true}
+              // closeOnClick={false}
+              // rtl={true}
+              // pauseOnFocusLoss
+              // draggable
+              // pauseOnHover
+              // theme="light"
+              // transition={"Slide"}
+            />
+          </label>
         </form>
-        <button type="submit" style={{ padding: "8px 20px" }}>
-          SignUp!
-        </button>
-        <br />
-        <br />
-        <p>
-          {perror ||
-            uerror || (
-              <p style={{ fontSize: "100px", color: "red" }}>{uerror}</p>
-            ) || <p style={{ fontSize: "100px", color: "red" }}>{perror}</p>}
-        </p>
         <p>
           Already a user ?,<Link to={"/login"}>Click here to Login</Link>!
         </p>

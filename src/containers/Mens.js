@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Mens = () => {
-  console.log('Mens section');
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(FetchMensProducts());

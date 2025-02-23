@@ -14,8 +14,6 @@ const ProductListing = () => {
     dispatch(fetchProducts());
   }, []);
 
-  //console.log("ProductListing After");
-
   const renderall = () => {
     return (
       <div className="ui grid container">
