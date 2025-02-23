@@ -22,9 +22,6 @@ const WishList = () => {
 
   // const product =useSelector((state)=>state.wish.wish)
   const wishListProduct = JSON.parse(localStorage.getItem("wishList") || "[]");
-  // console.log(allproducts, 'allproducts');
-  // console.log(typeof allproducts[0].id);
-  // console.log(wishListProduct, 'wishListProducts');
 
   const product = [];
   allproducts.forEach((element) => {
@@ -35,7 +32,7 @@ const WishList = () => {
 
   return (
     <>
-      {list ? (
+      {list?.length > 0 ? (
         list?.map((a) => {
           const { id, title, price, category, images } = a;
           return (

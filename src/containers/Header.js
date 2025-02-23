@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import SearchBar from "./SearchBar";
+import { useLocation } from "react-router-dom/cjs/react-router-dom";
+import { requireHeader } from "./Constants";
+import LoginHeader from "./LoginHeader";
 
 const Header = () => {
-  return (
+  const location = useLocation();
+  const path = location?.pathname;
+  const [isHeaderrequired, setIsheaderRequired] = useState(false);
+  useEffect(() => {
+    const main = path.split("/");
+    setIsheaderRequired(requireHeader?.includes(`/${main[1]}`));
+  }, [path]);
+  const isLogin = path === "/login";
+  return isHeaderrequired ? (
     <div
       className="ui fixed menu"
       style={{ display: "flex", flexDirection: "row", color: "white" }}
@@ -54,6 +65,10 @@ const Header = () => {
         <p style={{ color: "black" }}>Bag</p>
       </div>
     </div>
+  ) : isLogin ? (
+    <LoginHeader val={"Login"} />
+  ) : (
+    <LoginHeader val={"Signup"} />
   );
 };
 

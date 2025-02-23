@@ -30,12 +30,11 @@ const Signup = () => {
         gap: "100px",
       }}
     >
-      <img src={signup} style={{ width: "630px" }} alt="signup-img" />
+      <img src={signup} style={{ height: "80vh" }} alt="signup-img" />
       <div
-        className="login-header"
         style={{
-          height: "600px",
-          width: "800px",
+          height: "80vh",
+          width: "50%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

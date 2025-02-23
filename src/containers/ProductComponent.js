@@ -7,7 +7,6 @@ import { Spinner } from "react-spinner";
 
 const ProductComponent = (props) => {
   const product = useSelector((state) => state.allproducts.products); //array of objects
-  //console.log(product);
   const mens = useSelector((state) => state.mens.data);
   const searchText = useSelector((state) => state.search.searchWord);
   const appliances = useSelector((state) => state.appliances.data);
@@ -97,7 +96,6 @@ const ProductComponent = (props) => {
     electronics,
   ]);
 
-  //console.log(filterData, 'filterData');
   const renderList = useMemo(() => {
     return (
       <InfiniteScroll

@@ -125,6 +125,9 @@
   width: 100%; /* Full width */
   z-index: 1000; /* High z-index */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+  .loginHeader {
+    font-size: 2rem;
+  }
 }
 
 .ui.container.center {
@@ -237,9 +240,11 @@ body {
 }
 
 .login-container {
-  width: 80%;
-  margin: 50px auto;
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;

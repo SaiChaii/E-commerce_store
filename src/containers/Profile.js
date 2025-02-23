@@ -2,7 +2,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem('User'));
-  //console.log(typeof user);
   const history = useHistory();
   if (user === null || JSON.stringify(user) === '{}') {
     history.push('/sign-up');

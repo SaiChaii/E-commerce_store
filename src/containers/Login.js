@@ -4,8 +4,8 @@ import Signup from "./Signup";
 import login from "../images/login.svg";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("sai");
+  const [password, setPassword] = useState("123");
   const [error, setError] = useState(null);
   const [suggestedEmail, setsuggestedEmail] = useState("");
   const history = useHistory();
@@ -25,11 +25,11 @@ const Login = () => {
         gap: "100px",
       }}
     >
-      <img src={login} alt="login-img" style={{ height: "75vh" }} />
+      <img src={login} alt="login-img" style={{ height: "80vh" }} />
       <div
         style={{
-          height: "500px",
-          width: "600px",
+          height: "80vh", // Ensure it takes full height of the parent
+          width: "50%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -41,72 +41,55 @@ const Login = () => {
         <h1>Login</h1>
         <form
           className="login-form"
-          style={{gap:'20px'}}
+          style={{
+            gap: "20px",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            alignItems: "center",
+          }}
           onSubmit={(event) => {
             event.preventDefault();
-
             const Users = JSON.parse(localStorage.getItem("Users"));
 
-            // localStorage.setItem("User","{}")
+            let isAuthenticated = false;
             Users.forEach((element) => {
               if (element.UserN === username && element.PassW === password) {
                 localStorage.setItem("User", JSON.stringify(element));
                 setError("");
                 history.push("/home");
-              } else {
-                setError("UserName / Password is wrong");
+                isAuthenticated = true;
               }
             });
+
+            if (!isAuthenticated) {
+              setError("UserName / Password is wrong");
+            }
           }}
         >
           <label
             style={{
               display: "flex",
-              flexDirection: "row",
               alignItems: "center",
               justifyContent: "center",
+              width: "100%",
             }}
           >
-            <span>Username: </span>
+            <span>Username:</span>
             <input
               type="text"
               value={username}
               style={{ marginLeft: "30px", width: "300px" }}
               onChange={(event) => setUsername(event.target.value)}
-              onClick={(event) => {
-                return (
-                  <div>
-                    {Users.map((user) => {
-                      return (
-                        <div>
-                          {user.UserN}
-                          {user.PassW}
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              }}
               placeholder="Enter your e-mail"
             />
-            {/* {
-            suggestedEmail && (
-              <div className='email-suggestion'>
-                <p>
-                  Log in with {suggestedEmail}
-                </p>
-
-              </div>
-            )
-          } */}
           </label>
-          <br />
           <label
             style={{
               display: "flex",
-              flexDirection: "row",
               alignItems: "center",
               justifyContent: "center",
+              width: "100%",
             }}
           >
             <span>Password:</span>
@@ -115,19 +98,14 @@ const Login = () => {
               value={password}
               style={{ marginLeft: "30px", width: "300px" }}
               onChange={(event) => setPassword(event.target.value)}
-              placeholder="Enter your password"
             />
           </label>
-          <br />
           <button type="submit" style={{ padding: "8px 20px" }}>
             Login
           </button>
-          <br />
-          <br />
           {error && <p style={{ color: "red" }}>{error}</p>}
-
           <Link to="/sign-up" style={{ color: "red" }}>
-            New here ? Click here to signup!
+            New here? Click here to signup!
           </Link>
         </form>
       </div>
