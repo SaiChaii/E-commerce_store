@@ -11,7 +11,7 @@ const Login = () => {
   const history = useHistory();
   const Users = JSON.parse(localStorage.getItem("Users"));
   useEffect(() => {
-    const suggestedEmail = Users.find((p) => p.userN === username);
+    const suggestedEmail = Users?.find((p) => p.userN === username);
     setsuggestedEmail(suggestedEmail);
   }, [username]);
 
