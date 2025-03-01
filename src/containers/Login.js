@@ -53,7 +53,7 @@ const Login = () => {
             const Users = JSON.parse(localStorage.getItem("Users"));
 
             let isAuthenticated = false;
-            Users.forEach((element) => {
+            Users?.forEach((element) => {
               if (element.UserN === username && element.PassW === password) {
                 localStorage.setItem("User", JSON.stringify(element));
                 setError("");
