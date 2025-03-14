@@ -11,7 +11,7 @@ const Home = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: "Cursive,sans-serif",
+              fontFamily: "Lora,sans-serif",
               fontSize: "50px",
               margin: "50px",
             }}
@@ -103,8 +103,8 @@ const Home = () => {
           </div>
           <div
             style={{
-              paddingTop: "250px",
-              fontFamily: "Cursive,sans-serif",
+              paddingTop: "180px",
+              fontFamily: "Lora,sans-serif",
               fontSize: "50px",
             }}
           >
