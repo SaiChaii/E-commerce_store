@@ -17,7 +17,7 @@ const Header = () => {
   return isHeaderrequired ? (
     <div
       className="ui fixed menu"
-      style={{ display: "flex", flexDirection: "row", color: "white" }}
+      style={{ display: "flex", alignItems: "center", color: "#f0eece" }}
     >
       <div className="ui container center" style={{ right: "30px" }}>
         <Link to="/home" style={{ color: "black" }}>
@@ -33,7 +33,7 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="search-bar" style={{ margin: "10px 0 10px 10px" }}>
+      <div className="search-bar">
         <SearchBar />
       </div>
       <div className="three-buttons">
@@ -41,7 +41,7 @@ const Header = () => {
           <img
             src="../../user-icon.png"
             alt="profile-img"
-            style={{ height: 30, width: 30 }}
+            style={{ height: 20, width: 20 }}
           />
         </Link>
         <p style={{ color: "black" }}>Profile</p>
@@ -51,7 +51,7 @@ const Header = () => {
           <img
             src="../../wishbefore.png"
             alt="wishlist-img"
-            style={{ height: 30, width: 30 }}
+            style={{ height: 20, width: 20 }}
           />
         </Link>
         <p style={{ color: "black" }}>WishList</p>
@@ -60,7 +60,7 @@ const Header = () => {
         <img
           src="../../bag.png"
           alt="bag-img"
-          style={{ height: 30, width: 30 }}
+          style={{ height: 20, width: 20 }}
         />
         <p style={{ color: "black" }}>Bag</p>
       </div>

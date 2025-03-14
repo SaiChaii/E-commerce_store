@@ -50,21 +50,22 @@ const Login = () => {
           }}
           onSubmit={(event) => {
             event.preventDefault();
-            const Users = JSON.parse(localStorage.getItem("Users"));
+            // const Users = JSON.parse(localStorage.getItem("Users"));
 
-            let isAuthenticated = false;
-            Users?.forEach((element) => {
-              if (element.UserN === username && element.PassW === password) {
-                localStorage.setItem("User", JSON.stringify(element));
-                setError("");
-                history.push("/home");
-                isAuthenticated = true;
-              }
-            });
+            // let isAuthenticated = false;
+            // Users?.forEach((element) => {
+            //   if (element.UserN === username && element.PassW === password) {
+            //     localStorage.setItem("User", JSON.stringify(element));
+            //     setError("");
+            //     history.push("/home");
+            //     isAuthenticated = true;
+            //   }
+            // });
 
-            if (!isAuthenticated) {
-              setError("UserName / Password is wrong");
-            }
+            // if (!isAuthenticated) {
+            //   setError("UserName / Password is wrong");
+            // }
+            history.push("/home");
           }}
         >
           <label

@@ -15,6 +15,9 @@
 
 .image-content {
   background-color: "no color";
+  .h1 {
+    margin: 0 !important;
+  }
 }
 
 .ui.container {
@@ -117,12 +120,11 @@
   hyphens: auto;
 }
 .ui.fixed.menu {
-  background-color: #fffefe; /* Dark Gray */
-  color: #fff; /* White */
+  background-color: #eaf2bc; /* Dark Gray */
+  color: #f0eece;
+  height: 67px;
   padding: 1em 0; /* Top and Bottom padding */
   position: fixed; /* Fixed position */
-  top: 0; /* Top position */
-  width: 100%; /* Full width */
   z-index: 1000; /* High z-index */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
   .loginHeader {
@@ -143,7 +145,7 @@
 }
 
 .three-buttons {
-  background-color: #fff;
+  background-color: #eaf2bc; /* Dark Gray */
 
   padding: 10px 20px;
   /* justify-content: space-around; */
@@ -177,7 +179,7 @@
 }
 
 .content-container {
-  padding-top: 110px; /* Adjust the value to match the header height */
+  padding-top: 60px; /* Adjust the value to match the header height */
 }
 
 .all-content {
@@ -207,11 +209,15 @@
   color: #61dafb;
 }
 
+.ui.fixed.menu {
+  padding: unset !important;
+}
+
 .search-bar {
   /* position: absolute; */
-  width: 380px;
   left: 100%;
   margin: 0 10px; /* Adjust the margin to fit your design */
+  width: 400px;
   /* padding: 10px; */
   border-radius: 10px; /* Semi-circular edges */
   background-color: #fffdfd; /* Light gray background */
@@ -220,8 +226,7 @@
 
 .search-bar input {
   width: 85%;
-  height: 53px;
-  padding: 10px;
+  height: 36px;
   border: none;
   border-radius: 5px; /* Semi-circular edges */
   font-size: 16px;
