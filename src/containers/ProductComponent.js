@@ -110,7 +110,7 @@ const ProductComponent = (props) => {
         }
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
+          gridTemplateColumns: "repeat(4, 1fr)",
           gridGap: "30px",
           overflowY: "auto",
           padding: "20px",

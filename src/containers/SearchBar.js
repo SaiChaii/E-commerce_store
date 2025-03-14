@@ -19,12 +19,10 @@ function SearchBar() {
       className=""
       style={{
         display: "flex",
-        flexDirection: "row",
         alignItems: "center",
         gap: "5px",
       }}
     >
-      <>
         <img
           src="../../search-icon.png"
           style={{ padding: "0 0 0 5px", width: "25px" }}
@@ -37,7 +35,6 @@ function SearchBar() {
           value={searchStr}
           onChange={handleInputChange}
         />
-      </>
     </div>
   );
 }
