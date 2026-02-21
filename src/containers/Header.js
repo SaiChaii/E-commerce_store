@@ -20,12 +20,13 @@ const Header = () => {
       style={{ display: "flex", alignItems: "center", color: "#f0eece" }}
     >
       <div className="ui container center" style={{ right: "30px" }}>
-        <Link to="/home" style={{ color: "black" }}>
+        <Link to="/home" style={{ color: "black", textDecoration: "none" }}>
           <h1
             style={{
               fontSize: "2em",
-              ffontFamily: "Arial, sans-serif",
-              left: "5px",
+              fontFamily: "Arial, sans-serif",
+              left: "1.5em",
+              position: "relative",
             }}
           >
             Chai-Commerce
