@@ -190,7 +190,7 @@
   display: flex;
   gap: 40px;
   /* padding-left: 200px; */
-  border-radius: 50%;
+  border-radius: 21px;
   justify-content: center; /* Center items horizontally */
   /* align-items: center; */
 }
@@ -238,9 +238,9 @@ body {
 }
 
 .carousel {
-  align-items: center;
-  padding-top: 50px;
-  height: 100px;
+  padding-top: 110px;
+  margin: auto;
+  width: 99vw;
   /* display: flex; */
 }
 

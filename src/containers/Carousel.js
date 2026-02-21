@@ -36,8 +36,8 @@ const CarouselTab = () => {
           alt="mens"
           style={{
             position: 'relative',
-            height: '110vh',
-            width: '100vw',
+            height: '100%',
+            width: '100%',
             transition: 'transform 2.5s ease-in-out', // Add transition effect
             // translate:`${-100*index}%`,
             transform:`${-100*index}%`
