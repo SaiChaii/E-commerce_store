@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./containers/Header";
 import ProductListing from "./containers/ProductListing";
